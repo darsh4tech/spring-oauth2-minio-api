@@ -1,0 +1,7 @@
+databaseChangeLog:
+    - include:
+        - file: changes/init-script.xml
+        - relativeToChangelogFile: true
+    - include:
+        - file: changes/add-admin-user.xml
+        - relativeToChangelogFile: true
