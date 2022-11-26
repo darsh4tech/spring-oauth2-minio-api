@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "602b13b4-7562-464f-882a-e8195c089cd4",
+		"name": "keen-eye",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Request token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "keeneye-secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "keeneye-client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "rohan",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "default"
+						},
+						{
+							"key": "scope",
+							"value": "all",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "client1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "client_secret ",
+							"value": "secret1",
+							"type": "default",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request token by refresh token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "client1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "secret1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "client1",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret1",
+							"type": "default"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "default"
+						},
+						{
+							"key": "refresh_token",
+							"value": "2df70378-5625-4732-8d2e-3e5879a2f84f",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "refresh_token",
+							"value": "66fc0cdd-d224-416c-912f-fc101a294c07",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All Users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"darsh\",\n    \"password\": \"1234\",\n    \"email\": \"test@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"disha\",\n    \"password\": \"4321\",\n    \"email\": \"test@darsh.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/users/disha",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"users",
+						"disha"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All products",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{OAuth_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{OAuth_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\": \"Car\",\n    \"prodName\": \"BMW\",\n    \"price\": 10.5,\n    \"minQuantity\": 5,\n    \"discountRate\": 0.5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{OAuth_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/darsh/Downloads/Full Stack Assignment - KeenEye (6).pdf"
+						},
+						{
+							"key": "productId",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:7070/resource",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "download Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{OAuth_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/resource?fileId=1/636478b4-559f-4c9e-981d-0f3203146143__IoT_Site_Reliability_Engineering _Technical_Assessment.pdf&productId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"resource"
+					],
+					"query": [
+						{
+							"key": "fileId",
+							"value": "1/636478b4-559f-4c9e-981d-0f3203146143__IoT_Site_Reliability_Engineering _Technical_Assessment.pdf"
+						},
+						{
+							"key": "productId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"function getSecondsDiff(startDate, endDate) {",
+					"  const msInSecond = 1000;",
+					"  return Math.round(",
+					"    Math.abs(endDate - startDate) / msInSecond",
+					"  );",
+					"}",
+					"var tokenDate = new Date(2010,1,1);",
+					"var tokenTimestamp = pm.collectionVariables.get(\"OAuth_Timestamp\");",
+					"if(tokenTimestamp){",
+					"  tokenDate = Date.parse(tokenTimestamp);",
+					"}",
+					"var expiresInTime = pm.collectionVariables.get(\"ExpiresInTime\");",
+					"if(!expiresInTime){",
+					"    expiresInTime = 300; // Set default expiration time to 300 seconds and will be changed with first request",
+					"}",
+					"if(getSecondsDiff(new Date(), tokenDate) >= expiresInTime) ",
+					"{",
+					"    var details = {",
+					"        'username': 'rohan',",
+					"        'password': '1234',",
+					"        'grant_type': 'password'",
+					"    };",
+					"    var formBody = [];",
+					"    for (var property in details) {",
+					"        var encodedKey = encodeURIComponent(property);",
+					"        var encodedValue = encodeURIComponent(details[property]);",
+					"        formBody.push(encodedKey + \"=\" + encodedValue);",
+					"    }",
+					"   formBody = formBody.join(\"&\");",
+					"   pm.sendRequest({",
+					"      url:  pm.variables.get(\"Auth_Url\"), ",
+					"      method: 'POST',",
+					"      header: {",
+					"        'Accept': 'application/json',",
+					"        'Content-Type': 'application/x-www-form-urlencoded',",
+					"        'Authorization': pm.variables.get(\"Basic_Auth\")",
+					"      },",
+					"      body: formBody",
+					"  }, function (err, res) {",
+					"        console.log(res.json());",
+					"        pm.collectionVariables.set(\"OAuth_Token\", res.json().access_token);",
+					"        pm.collectionVariables.set(\"OAuth_Timestamp\", new Date());",
+					"        ",
+					"        // Set the ExpiresInTime variable to the time given in the response if it exists",
+					"        if(res.json().expires_in){",
+					"            expiresInTime = res.json().expires_in;",
+					"        }",
+					"        pm.collectionVariables.set(\"ExpiresInTime\", expiresInTime);",
+					"  });",
+					"}else{",
+					"    console.log('#################--->Token Not Expired<--------#######################');",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Auth_Url",
+			"value": "http://localhost:8090/oauth/token",
+			"type": "default"
+		},
+		{
+			"key": "Basic_Auth",
+			"value": "Basic a2VlbmV5ZS1jbGllbnQ6a2VlbmV5ZS1zZWNyZXQ=",
+			"type": "default"
+		},
+		{
+			"key": "OAuth_Token",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "OAuth_Timestamp",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "ExpiresInTime",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
