@@ -13,3 +13,10 @@ i mean you didn't need to call the request for token api just call the resource 
 but in my case instead of put extra configuration as it is just task i used the public server of minio company which is https://play.min.io/minio/
 
 5) I added Unit Test and Integration Test to my code using Junit 5 (jupiter) and mockito
+
+6) As i was using docker compose so: 
+   1) run my containers using [ docker compose up ]
+   2) run [ docker ps ] to fetch the container_id value s to be used later
+   3) run this command [ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ??_my_container_id_?? ]
+   4) replace the container id within the command to get the IP of running container so i can put the postgres IP in my application.properties
+   5) use the IP of Pgadmin with port 80 to view my DB on the browser 
