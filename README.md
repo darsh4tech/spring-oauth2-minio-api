@@ -11,6 +11,9 @@ i mean you didn't need to call the request for token api just call the resource 
 
 4) the resource server deal with file management so, i used Minio's Api where Minio allows the upload and download of files for containerized applications, respecting the interfaces of Amazon S3 solution using the terms of amazon S3 like bucket but upload your files to your own server not on the cloud 
 but in my case instead of put extra configuration as it is just task i used the public server of minio company which is https://play.min.io/minio/
+where: 
+   1) Access Key : Q3AM3UQ867SPQQA43P2F
+   2) Secret Key : zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
 
 5) I added Unit Test and Integration Test to my code using Junit 5 (jupiter) and mockito
 
