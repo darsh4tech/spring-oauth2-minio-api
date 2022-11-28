@@ -17,7 +17,9 @@ where:
 
 5) I added Unit Test and Integration Test to my code using Junit 5 (jupiter) and mockito
 
-6) As i was using docker compose so: 
+6) I added intergration test and mocked the the security layer above my resource server by creating dummy authentication server using the code 
+
+7) As i was using docker compose so: 
    1) run my containers using [ docker compose up ]
    2) run [ docker ps ] to fetch the container_id value s to be used later
    3) run this command [ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ??_my_container_id_?? ]
